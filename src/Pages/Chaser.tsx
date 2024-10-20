@@ -5,6 +5,7 @@ export default function Chaser() {
     const [soc, setSoc] = useState(new WebSocket("ws://162.19.154.182:8080"))
     const [loc, setLoc] = useState("")
     const [usr, setUsr] = useState("TELL ME TO SET MY NAME")
+    const [connd, connect] = useState(false)
 
     function login() {
         const socket = new WebSocket("ws://162.19.154.182:8080")
@@ -19,6 +20,7 @@ export default function Chaser() {
                 (new Modal('#locModal')).show()
             }
         });
+        connect(true)
     }
 
 
@@ -27,10 +29,9 @@ export default function Chaser() {
         <div>
             <h1>Chaser panel</h1>
 
-            <label htmlFor="exampleFormControlInput2" className="form-label">Username</label>
-            <input className="form-control" onChange={e => setUsr(e.target.value)} id="exampleFormControlInput2" placeholder="develop331" />
-            <button className="mt-3 btn btn-primary" onClick={login}>Login</button>
-
+            {!connd ? (<div><label htmlFor="exampleFormControlInput1" className="form-label">Username</label>
+                <input className="form-control" onChange={e => setUsr(e.target.value)} id="exampleFormControlInput1" placeholder="develop331" />
+                <button className="mt-3 btn btn-primary" onClick={login}>Login</button></div>) : <div></div> }
             <div className="modal" id="locModal" tabIndex="-1">
                 <div className="modal-dialog">
                     <div className="modal-content">
