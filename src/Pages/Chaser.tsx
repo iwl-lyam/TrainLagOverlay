@@ -2,12 +2,12 @@ import {useState, useEffect} from 'react'
 import {Modal} from 'bootstrap'
 
 export default function Chaser() {
-    const [soc, setSoc] = useState(new WebSocket("ws://localhost:8080"))
+    const [soc, setSoc] = useState(new WebSocket("ws://162.19.154.182:8080"))
     const [loc, setLoc] = useState("")
     const [usr, setUsr] = useState("TELL ME TO SET MY NAME")
 
     function login() {
-        const socket = new WebSocket("ws://localhost:8080")
+        const socket = new WebSocket("ws://162.19.154.182:8080")
         setSoc(socket)
         socket.addEventListener("open", event => {
             socket.send(JSON.stringify({op: 0, name: usr, runner: false}))

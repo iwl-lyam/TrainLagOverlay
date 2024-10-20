@@ -2,11 +2,11 @@ import {useState, useEffect} from 'react'
 
 export default function Runner() {
     const [locData, setLocData] = useState([])
-    const [soc, setSoc] = useState(new WebSocket("ws://localhost:8080"))
+    const [soc, setSoc] = useState(new WebSocket("ws://162.19.154.182:8080"))
     const [usr, setUsr] = useState("TELL ME TO SET MY NAME")
 
     const signin = () => {
-        const socket = new WebSocket("ws://localhost:8080")
+        const socket = new WebSocket("ws://162.19.154.182:8080")
         setSoc(socket)
         socket.addEventListener("open", event => {
             socket.send(JSON.stringify({op: 0, name: usr, runner: true}))
